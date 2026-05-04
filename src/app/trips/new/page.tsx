@@ -18,7 +18,7 @@ export default function NewTripPage() {
     e.preventDefault();
     setError("");
 
-    if (new Date(endDate) < new Date(startDate)) {
+    if (endDate && new Date(endDate) < new Date(startDate)) {
       setError("End date can't be before start date.");
       return;
     }
@@ -38,7 +38,7 @@ export default function NewTripPage() {
       user_id: user.id,
       destination,
       start_date: startDate,
-      end_date: endDate,
+      end_date: endDate || null,
       notes: notes || null,
     });
 
@@ -79,16 +79,18 @@ export default function NewTripPage() {
             />
           </label>
           <label className="flex flex-col gap-1">
-            <span className="text-sm font-medium">End date</span>
+            <span className="text-sm font-medium">End date (optional)</span>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              required
               className="rounded border border-zinc-300 px-3 py-2"
             />
           </label>
         </div>
+        <p className="-mt-2 text-xs text-zinc-500">
+          Leave end date blank if you don&apos;t have a return date yet.
+        </p>
         <label className="flex flex-col gap-1">
           <span className="text-sm font-medium">Notes (optional)</span>
           <textarea

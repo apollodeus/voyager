@@ -6,7 +6,7 @@ type Trip = {
   user_id: string;
   destination: string;
   start_date: string;
-  end_date: string;
+  end_date: string | null;
   notes: string | null;
   created_at: string;
 };
@@ -137,7 +137,8 @@ function tripBy(
   return p?.display_name || p?.email || "a friend";
 }
 
-function formatDateRange(start: string, end: string) {
+function formatDateRange(start: string, end: string | null) {
+  if (!end) return `${formatDate(start)} – ongoing`;
   return `${formatDate(start)} – ${formatDate(end)}`;
 }
 
