@@ -64,6 +64,12 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">Voyager</h1>
         <nav className="flex items-center gap-3">
           <Link
+            href="/timeline"
+            className="text-sm text-blue-600 hover:underline"
+          >
+            Timeline
+          </Link>
+          <Link
             href="/friends"
             className="text-sm text-blue-600 hover:underline"
           >
